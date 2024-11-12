@@ -5,7 +5,6 @@ on:
     - cron: '0 * * * *'  # Runs every hour at the start of the hour
   workflow_dispatch:  # Allows manual triggering
 
-# Add permissions block
 permissions:
   issues: write
   pull-requests: read
@@ -103,7 +102,7 @@ jobs:
 
               const issueBody = [
                 '# 🏆 Loose Goose November 2024 Leaderboard 🏆',
-                'You thought Hacktoberfest 2024 was over?! The open source party is just getting started..! Wrap up 2024 with a bang (or honk) while enjoying super-fun contributions with Loose Goose November. From Nov 1st to Nov 20th, check our live leaderboard below to see who our top contributors are in real-time. Not only does this recognize everyone's efforts, it also brings an amplified competitive vibe with each contribution. 👀',
+                'You thought Hacktoberfest 2024 was over?! The open source party is just getting started..! Wrap up 2024 with a bang (or honk) while enjoying super-fun contributions with Loose Goose November. From Nov 1st to Nov 20th, check our live leaderboard below to see who our top contributors are in real-time. Not only does this recognize everyone\'s efforts, it also brings an amplified competitive vibe with each contribution. 👀',
                 '',
                 '## This event is open to both employees and external contributors! 🦢',
                 '### 🌟 **Current Rankings:**',
@@ -118,16 +117,17 @@ jobs:
                 '- Among our **top 3**? Our Top 3 Superstars earn $150 gift cards on Amazon. Stay tuned for the winners!',
                 '',
                 '### FAQ',
-                '- **Frequency of Updates:** The leaderboard will be updated every 1 hour.
+                '- **Frequency of Updates:** The leaderboard will be updated every 1 hour.',
                 '- **Criteria:** Rankings are based on how many points you earn and PRs you close in the goose-plugins repo. To ensure your PRs are successfully merged:',
-                  '- Ensure your contributions are aligned with our [project's CoC](https://github.com/block-open-source/goose-plugins/blob/main/CODE_OF_CONDUCT.md).',
-                  '- Refer to our [Contributing Guide](https://github.com/block-open-source/goose-plugins/blob/main/CONTRIBUTING.md).',
+                '  - Ensure your contributions are aligned with our [project\'s CoC](https://github.com/block-open-source/goose-plugins/blob/main/CODE_OF_CONDUCT.md).',
+                '  - Refer to our [Contributing Guide](https://github.com/block-open-source/goose-plugins/blob/main/CONTRIBUTING.md).',
                 '- **Tie-Breaker:** In the event of a tie-breaker, the tie-breaking PR that was submitted soonest will break the tie.',
+                '',
                 '### 🚀 Get Featured:',
                 'Want to see your name climbing our ranks? Explore our content issues with the labels `loosegoose` in our Loose Goose Project Hub:',
-                '- [ ] #32 ',
+                '- [ ] #32',
                 '',
-                'Excited to see everyone's hard work. Thank you so much for your invaluable contributions, and let the fun competition begin!',
+                'Excited to see everyone\'s hard work. Thank you so much for your invaluable contributions, and let the fun competition begin!',
                 `Last updated: ${new Date().toUTCString()}`
               ].join('\n');
 
@@ -152,7 +152,7 @@ jobs:
             console.log("No leaderboard data to update.");
             const emptyIssueBody = [
               '# 🏆 Loose Goose November 2024 Leaderboard 🏆',
-              'You thought Hacktoberfest 2024 was over?! The open source party is just getting started..! Wrap up 2024 with a bang (or honk) while enjoying super-fun contributions with Loose Goose November. From Nov 1st to Nov 20th, check our live leaderboard below to see who our top contributors are in real-time. Not only does this recognize everyone's efforts, it also brings an amplified competitive vibe with each contribution. 👀',
+              'You thought Hacktoberfest 2024 was over?! The open source party is just getting started..! Wrap up 2024 with a bang (or honk) while enjoying super-fun contributions with Loose Goose November. From Nov 1st to Nov 20th, check our live leaderboard below to see who our top contributors are in real-time. Not only does this recognize everyone\'s efforts, it also brings an amplified competitive vibe with each contribution. 👀',
               '',
               '## This event is open to both employees and external contributors! 🦢',
               '### 🌟 **Current Rankings:**',
@@ -165,15 +165,17 @@ jobs:
               '- Among our **top 3**? Our Top 3 Superstars earn $150 gift cards on Amazon. Stay tuned for the winners!',
               '',
               '### FAQ',
-              '- **Frequency of Updates:** The leaderboard will be updated every 1 hour.
-              '- **Criteria:** Rankings are based on how many points you earn and PRs you close in the goose-plugins repo. To ensure your PRs are successfully merged:',                  '- Ensure your contributions are aligned with our [project's CoC](https://github.com/block-open-source/goose-plugins/blob/main/CODE_OF_CONDUCT.md).',
-                '- Refer to our [Contributing Guide](https://github.com/block-open-source/goose-plugins/blob/main/CONTRIBUTING.md).',
+              '- **Frequency of Updates:** The leaderboard will be updated every 1 hour.',
+              '- **Criteria:** Rankings are based on how many points you earn and PRs you close in the goose-plugins repo. To ensure your PRs are successfully merged:',
+              '  - Ensure your contributions are aligned with our [project\'s CoC](https://github.com/block-open-source/goose-plugins/blob/main/CODE_OF_CONDUCT.md).',
+              '  - Refer to our [Contributing Guide](https://github.com/block-open-source/goose-plugins/blob/main/CONTRIBUTING.md).',
               '- **Tie-Breaker:** In the event of a tie-breaker, the tie-breaking PR that was submitted soonest will break the tie.',
+              '',
               '### 🚀 Get Featured:',
-               'Want to see your name climbing our ranks? Explore our content issues with the labels `loosegoose` in our Loose Goose Project Hub:',
-              '- [ ] #32 ',
-               '',
-              'Excited to see everyone's hard work. Thank you so much for your invaluable contributions, and let the fun competition begin!',
+              'Want to see your name climbing our ranks? Explore our content issues with the labels `loosegoose` in our Loose Goose Project Hub:',
+              '- [ ] #32',
+              '',
+              'Excited to see everyone\'s hard work. Thank you so much for your invaluable contributions, and let the fun competition begin!',
               `Last updated: ${new Date().toUTCString()}`
             ].join('\n');
 
