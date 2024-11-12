@@ -26,6 +26,7 @@ jobs:
           const calculatePoints = (labels) => {
             return 10;
           };
+
           const fetchRecentPRs = async (repo) => {
             try {
               console.log(`Fetching recent PRs for ${repo}`);
@@ -41,7 +42,9 @@ jobs:
                 direction: 'desc',
                 per_page: 100
               });
+              
               console.log(`Fetched ${prs.length} PRs for ${repo}`);
+              
               const loosegoosePRs = prs.filter(pr => {
                 const isMerged = !!pr.merged_at;
                 const isRecent = new Date(pr.merged_at) > new Date(thirtyDaysAgo);
@@ -60,6 +63,7 @@ jobs:
               return [];
             }
           };
+
           const generateLeaderboard = async () => {
             try {
               const allPRs = await Promise.all(REPOS.map(fetchRecentPRs));
@@ -79,30 +83,29 @@ jobs:
                   points: data.points, 
                   prs: data.prs 
                 }));
-              return sortedLeaderboard;
             } catch (error) {
               console.error(`Error generating leaderboard: ${error.message}`);
               return [];
             }
           };
 
-          const formatTableRow = (entry) => {
-            return `| ${entry.rank} | @${entry.username} | ${entry.points} | ${entry.prs} |`;
-          };
-          
           const updateIssue = async (leaderboardData) => {
-            const issueBody = [
-              '# 🏆 Loose Goose November 2024 Leaderboard 🏆',
-              '',
-              '### 🌟 **Current Rankings:**',
-              '| Rank | Contributor | Points | PRs |',
-              '|------|-------------|--------|-----|',
-              tableRows,
-              '',
-              `Last updated: ${new Date().toUTCString()}`
-            ].join('\n');
-          
             try {
+              const rows = leaderboardData.map(entry => 
+                `| ${entry.rank} | @${entry.username} | ${entry.points} | ${entry.prs} |`
+              ).join('\n');
+
+              const issueBody = [
+                '# 🏆 Loose Goose November 2024 Leaderboard 🏆',
+                '',
+                '### 🌟 **Current Rankings:**',
+                '| Rank | Contributor | Points | PRs |',
+                '|------|-------------|--------|-----|',
+                rows,
+                '',
+                `Last updated: ${new Date().toUTCString()}`
+              ].join('\n');
+
               await github.rest.issues.update({
                 owner,
                 repo,
@@ -114,7 +117,7 @@ jobs:
               throw new Error(`Failed to update issue: ${error.message}`);
             }
           };
-          
+
           // Main execution
           const leaderboardData = await generateLeaderboard();
           
